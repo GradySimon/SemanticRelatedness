@@ -1,11 +1,22 @@
 import networkx as nx
 
-def add_entity():
+class Semantic_Network:
 
-def add_connection():
+    def __init__(self):
+        self.graph = nx.Graph()
 
-def remove_entity():
+    def add_entity(self, entity):
+        self.graph.add_node(entity)
 
-def remove_connection():
+    def connect(self, first_entity, second_entity, strength):
+        edge = (first_entity, second_entity, {'capacity':strength})
+        self.graph.add_edge(*edge)
 
-def calc_relatedness():
+    def remove_entity(self, entity):
+        self.graph.remove_node(entity)
+
+    def remove_connection(self, first_entity, second_entity):
+        self.graph.remove_edge(first_entity, second_entity)
+
+    # def calc_relatedness(self, first_entity, second_entity):
+        
