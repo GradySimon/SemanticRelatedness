@@ -2,8 +2,11 @@ import networkx as nx
 
 class Semantic_Network:
 
-    def __init__(self):
-        self.graph = nx.Graph()
+    def __init__(self, path=None):
+        if path is not None:
+            self.graph = nx.read_edgelist(path)
+        else:
+            self.graph = nx.Graph()
 
     def add_entity(self, entity):
         self.graph.add_node(entity)
@@ -28,11 +31,15 @@ class Semantic_Network:
     def calc_relatedness(self, first_entity, second_entity):
         subgraph = get_decaying_subgraph(self.graph, 
                                         [first_entity, second_entity])
-        # calculate max flow from first_entity to second_entity        
         return nx.max_flow(subgraph, first_entity, second_entity)
 
     def get_strength_dict(self):
         return get_capacity_dict(self.graph)
+
+    def save_to_file(self, path):
+        nx.write_edgelist(self.graph, path, data=True)
+
+    
 
 def get_decaying_subgraph(graph, start_nodes, max_hops=3, decay_rate=0.5):
     subgraph = nx.Graph()
