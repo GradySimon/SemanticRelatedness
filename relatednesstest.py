@@ -23,16 +23,22 @@ dog_connections = [("dog", "cat", 50),
                     ("human", "gambling", 30)]
 
 def get_test_network1():
+    """ Returns a sample Semantic_Network.
+    """
     network = Semantic_Network()
     network.add_entities(dog_entities)
     network.add_connections(dog_connections)
     return network
 
 def draw_network(network, location=None):
+    """ Displays in an interactive window a visualization of the graph underlying the specified Semantic_Network.
+    """
     graph = network.graph
     draw_graph(graph, location)
 
 def draw_graph(graph, location=None):
+    """ Displays in an interactive window a visualization of the specifed graph.
+    """
     positions = nx.spring_layout(graph)
     labels = get_capacity_dict(graph)
     plt.clf()
@@ -43,6 +49,3 @@ def draw_graph(graph, location=None):
         plt.show()
     else:
         plt.savefig(location)
-
-# if __name__=="__main__":
-    
