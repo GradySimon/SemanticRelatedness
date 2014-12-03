@@ -1,7 +1,5 @@
 [SemanticRelatedness](https://github.com/genre/SemanticRelatedness)
 =======
-# Author
-Grady Simon ([genre](https://github.com/genre))
 
 # Intro
 This project is a tool for calculating the semantic relatedness of two words. As the project stands, it offers an interface that allows you to add words to a Semantic Network and to define connections between those words. You specify the strength of those connections. This project can then provide you with a numeric estimation of the semantic relatedness of any two words in the Semantic Network you have defined.
